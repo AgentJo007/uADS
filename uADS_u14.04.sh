@@ -2,7 +2,7 @@
 
 ## Colors
 green='\033[0;32m'
-NC='\033[1;33m'
+NC='\033[1;0m'
 
 ## Get user input
 echo -e "${green}Enter domain name:${NC}"
@@ -20,12 +20,13 @@ clear
 echo -e "${green}Installing needed packages${NC}"
 sudo apt-get -y install winbind libpam-winbind libnss-winbind samba >> /dev/null
 echo -e "${red}Enter $DOMAIN in the next screen${NC}"
+sleep 5
 sudo apt-get -y install krb5-user krb5-config libpam-krb5
 
 ## Format and create additional variables
 DOMAIN=`echo $DOMAIN | awk '{print toupper($0)}'`
 domain=`echo $DOMAIN | awk '{print tolower($0)}'`
-
+WORKGROUP=`echo $DOMAIN | awk -F"." '{print $1}'`
 
 echo -e "${green}Configuring domain settings${NC}"
 
@@ -49,7 +50,7 @@ sudo sed -i 's/__domain__/'${domain}'/g' /etc/krb5.conf
 sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bk
 sudo cp ./smb.conf /etc/samba/smb.conf
 
-echo "workgroup = $DOMAIN" >> /etc/samba/smb.conf
+echo "workgroup = $WORKGROUP" >> /etc/samba/smb.conf
 echo "realm = $DOMAIN" >> /etc/samba/smb.conf
 echo "password server = $dc" >> /etc/samba/smb.conf
 
