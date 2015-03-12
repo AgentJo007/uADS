@@ -2,7 +2,7 @@
 
 ## Colors
 green='\033[0;31m'
-NC='\033[1,33m'
+NC='\033[1;33m'
 
 ## Get user input
 echo -e "${green}Enter domain name:${NC}"
