@@ -18,7 +18,7 @@ read dc
 ## Install needed packages
 clear
 echo -e "${green}Installing needed packages${NC}"
-sudo apt-get install winbind libpam-winbind libnss-winbind krb5-user krb5-config libpam-krb5 samba >> /dev/null
+sudo apt-get -y install winbind libpam-winbind libnss-winbind krb5-user krb5-config libpam-krb5 samba >> /dev/null
 
 
 ## Format and create additional variables
