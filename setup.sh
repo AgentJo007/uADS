@@ -6,5 +6,5 @@
 ##
 ##------------------------------------------------------------------------
 
-sudo chmod +x ubuntu/uADS_u14.04.sh
-sudo ubuntu/uADS_u14.04.sh
+sudo chmod +x uADS_u14.04.sh
+sudo ./uADS_u14.04.sh
