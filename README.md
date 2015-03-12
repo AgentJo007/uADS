@@ -14,5 +14,6 @@ Ubuntu 14.04
 `git clone https://github.com/cbrookins/uADS`  
 
 ### Run uADS
-`chmod +x uADS/setup.sh`  
-`uADS/setup.sh`
+`cd uADS`  
+`chmod +x setup.sh`  
+`./setup.sh`
