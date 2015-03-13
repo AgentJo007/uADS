@@ -19,7 +19,6 @@ read dc
 clear
 echo -e "${green}Installing needed packages${NC}"
 sudo apt-get -y install winbind libpam-winbind libnss-winbind samba >> /dev/null
-
 ## echo -e "${red}Enter $DOMAIN in the next screen${NC}"
 ## sleep 5
 
@@ -42,12 +41,14 @@ sudo sed -i '/^group:/ s/$/ winbind/' /etc/nsswitch.conf
 ## Edit /etc/krb5.conf
 sudo cp /etc/krb5.conf /etc/krb5.conf.bk
 sudo cp ./krb5.conf /etc/krb5.conf
-sudo apt-get -y install krb5-user krb5-config libpam-krb5
-
 
 sudo sed -i 's/__DOMAIN__/'${DOMAIN}'/g' /etc/krb5.conf
 sudo sed -i 's/__dc__/'${dc}'/g' /etc/krb5.conf
 sudo sed -i 's/__domain__/'${domain}'/g' /etc/krb5.conf
+
+sudo apt-get -y install krb5-user krb5-config libpam-krb5
+
+
 
 ## Edit /etc/samba/smb.conf
 sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bk
