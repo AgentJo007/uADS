@@ -46,7 +46,7 @@ sudo sed -i 's/__DOMAIN__/'${DOMAIN}'/g' /etc/krb5.conf
 sudo sed -i 's/__dc__/'${dc}'/g' /etc/krb5.conf
 sudo sed -i 's/__domain__/'${domain}'/g' /etc/krb5.conf
 
-sudo apt-get -y install krb5-user krb5-config libpam-krb5
+sudo apt-get -y install krb5-user krb5-config libpam-krb5 >> /dev/null
 
 
 
