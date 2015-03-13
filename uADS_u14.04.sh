@@ -60,7 +60,7 @@ echo "session required pam_mkhomedir.so skel=/etc/skel umask=0022" >> /etc/pam.d
 
 
 ## Edit /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
-echo "greeter-show-manual-login=true" >> /usr/share/lightdm/lightdm-conf.d/50-ubuntu.conf
+echo "greeter-show-manual-login=true" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 
 ## Restart services
 echo -e "${green}Restarting services...${NC}"
