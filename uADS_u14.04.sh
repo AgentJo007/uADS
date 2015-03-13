@@ -5,6 +5,7 @@ green='\033[0;32m'
 NC='\033[1;0m'
 
 ## Get user input
+clear
 echo -e "${green}Enter domain name:${NC}"
 read DOMAIN
 
@@ -32,14 +33,14 @@ echo -e "${green}Configuring domain settings${NC}"
 
 
 ## Edit /etc/nsswitch.conf
-sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bk
+sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bk >> /dev/null
 
 sudo sed -i '/^passwd:/ s/$/ winbind/' /etc/nsswitch.conf
 sudo sed -i '/^group:/ s/$/ winbind/' /etc/nsswitch.conf
 
 
 ## Edit /etc/krb5.conf
-sudo cp /etc/krb5.conf /etc/krb5.conf.bk
+sudo cp /etc/krb5.conf /etc/krb5.conf.bk >> /dev/null
 sudo cp ./krb5.conf /etc/krb5.conf
 
 sudo sed -i 's/__DOMAIN__/'${DOMAIN}'/g' /etc/krb5.conf
@@ -51,7 +52,7 @@ sudo apt-get -y install krb5-user krb5-config libpam-krb5 >> /dev/null
 
 
 ## Edit /etc/samba/smb.conf
-sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bk
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bk >> /dev/null
 sudo cp ./smb.conf /etc/samba/smb.conf
 
 echo "workgroup = $WORKGROUP" >> /etc/samba/smb.conf
