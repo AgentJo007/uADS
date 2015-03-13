@@ -78,6 +78,6 @@ sudo kinit $duser@$domain
 sudo net ads join -U $duser
 
 ## Reboot
-echo "${green}Rebooting now...{$NC}"
+echo "${green}Rebooting now...${$NC}"
 sleep 2
 sudo shutdown -r now
